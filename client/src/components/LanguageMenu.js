@@ -5,6 +5,7 @@ const LanguageMenu = ({ mutate }) => {
 
 	// const selectLanguage = props.selectLanguage;
 	const selectLanguage = (evt) => {
+        console.log('selected language', evt.target.value)
 		evt.persist();
 		mutate({
 			variables: { name: evt.target.value }
@@ -32,15 +33,15 @@ const LanguageMenu = ({ mutate }) => {
 	);
 };
 
-const selectLanguageMutation = gql`
-	mutation selectLanguage($name: String!) {
-		selectLanguage(name: $name) {
+const setLanguageMutation = gql`
+	mutation SetLanguage($name: String!) {
+		setLanguage(name: $name) {
 			name
 		}
 	}
 `;
 
 
-const SelectLanguageWithMutation = graphql(selectLanguageMutation)(LanguageMenu);
+const LanguageMenuWithMutation = graphql(setLanguageMutation)(LanguageMenu);
 
-export default SelectLanguageWithMutation;
+export default LanguageMenuWithMutation;

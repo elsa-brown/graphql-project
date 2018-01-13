@@ -8,13 +8,19 @@ type Message {
  	content: String
 }
 
+type Language {
+	name: String
+}
+
 type Query {
-  messages: [Message] 
+  messages: [Message]
+  language: Language
 }
 
 
 type Mutation {
   addMessage(content: String!): Message
+  setLanguage(name: String): Language
 }
 `;
 
